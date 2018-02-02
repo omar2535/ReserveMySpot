@@ -1,1 +1,2 @@
 # ReserveMySpot
+Simple reservation program 
