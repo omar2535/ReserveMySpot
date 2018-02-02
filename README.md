@@ -9,8 +9,9 @@ Here is a list of dependancies:
 * handlebars
 
 To run, in command prompt, navigate to the directory and enter:
-'''command
+'''
+
 nodejs server.js
 
 '''
-
+then navigate to localhost:3000
