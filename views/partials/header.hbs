@@ -2,9 +2,34 @@
     <meta charset="UTF-8">
     <title>{{pageTitle}}</title>
     <div class="navbar">
+
+        {{#ifCond active "home"}}
             <a class="active" href="/">Home</a>
             <a href="MyAccount">My Account</a>
             <a href="Help">Help</a>
             <a href="About">About</a>
+        {{/ifCond}}  
+
+        {{#ifCond active "myAccount"}}
+            <a href="/">Home</a>
+            <a class="active" href="MyAccount">My Account</a>
+            <a href="Help">Help</a>
+            <a href="About">About</a>
+        {{/ifCond}}    
+
+        {{#ifCond active "help"}}
+            <a href="/">Home</a>
+            <a href="MyAccount">My Account</a>
+            <a class="active" href="Help">Help</a>
+            <a href="About">About</a>
+        {{/ifCond}}    
+
+        {{#ifCond active "about"}}
+            <a href="/">Home</a>
+            <a href="MyAccount">My Account</a>
+            <a href="Help">Help</a>
+            <a class="active"href="About">About</a>
+        {{/ifCond}}    
+
     </div>
 </head>

@@ -22,7 +22,7 @@
 
 /* Add a color to the active/current link */
 .navbar a.active {
-    background-color: lightskyblue;
+    background: lightskyblue;
     color: white;
 }
 footer{
