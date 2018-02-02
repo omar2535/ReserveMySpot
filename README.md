@@ -7,3 +7,10 @@ Here is a list of dependancies:
 * MongoDB
 * bodyParser
 * handlebars
+
+To run, in command prompt, navigate to the directory and enter:
+'''command
+nodejs server.js
+
+'''
+
