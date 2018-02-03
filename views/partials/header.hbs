@@ -4,31 +4,31 @@
     <div class="navbar">
 
         {{#ifCond active "home"}}
-            <a class="active" href="/">Home</a>
-            <a href="MyAccount">My Account</a>
-            <a href="Help">Help</a>
-            <a href="About">About</a>
+            <a id = "home" class="active" href="/">Home</a>
+            <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            <a id = "help" href="Help">Help</a>
+            <a id = "about" href="About">About</a>
         {{/ifCond}}  
 
         {{#ifCond active "myAccount"}}
-            <a href="/">Home</a>
-            <a class="active" href="MyAccount">My Account</a>
-            <a href="Help">Help</a>
-            <a href="About">About</a>
+            <a id = "home" href="/">Home</a>
+            <a id = "myaccount" style="float:right" class="active" href="MyAccount">My Account</a>
+            <a id = "help" href="Help">Help</a>
+            <a id = "about" href="About">About</a>
         {{/ifCond}}    
 
         {{#ifCond active "help"}}
-            <a href="/">Home</a>
-            <a href="MyAccount">My Account</a>
-            <a class="active" href="Help">Help</a>
-            <a href="About">About</a>
+            <a id = "home" href="/">Home</a>
+            <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            <a id = "help" class="active" href="Help">Help</a>
+            <a id = "about" href="About">About</a>
         {{/ifCond}}    
 
         {{#ifCond active "about"}}
-            <a href="/">Home</a>
-            <a href="MyAccount">My Account</a>
-            <a href="Help">Help</a>
-            <a class="active"href="About">About</a>
+            <a id = "home" href="/">Home</a>
+            <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            <a id = "help" href="Help">Help</a>
+            <a id = "about" class="active"href="About">About</a>
         {{/ifCond}}    
 
     </div>
