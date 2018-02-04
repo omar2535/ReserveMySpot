@@ -1,11 +1,23 @@
 /*jshint esversion: 6 */
 
-const express = require('express');
-const app = express();
-const MongoClient = require('mongodb').MongoClient;
-const bodyParser = require('body-parser');
-const path = require('path');
-const hbs = require('hbs');
+//INITIALIZE DEPENDENCIES
+const express = require('express');        //Express.js
+const app = express();                     //Express.js app
+const MongoClient = require('mongodb').MongoClient;    //MongoDB client
+const bodyParser = require('body-parser');             //To parse URL information
+const path = require('path');                          //Path - inside NODE
+const hbs = require('hbs');                            //Handlebars 
+const passport = require('passport');                  //passportjs
+const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;  //passportjs Google strategy
+
+require('./routes')(app);                             //Initialize the routes this app will do
+require('./oauthroutes')(app, passport, GoogleStrategy);
+
+//Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Setting the pathnames and middleware
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view enginer', 'hbs');
 
@@ -16,6 +28,7 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
     return options.inverse(this);
   });
 
+//Port number and start listening on PORT
 const PORT = 3000;
 app.listen(PORT, ()=>{
     console.log("app listening on port: "+ PORT);
@@ -24,36 +37,3 @@ app.listen(PORT, ()=>{
 //To use CSS files:
 app.use(express.static(path.join(__dirname + '/public')));
 
-//Getting homepage and returning
-app.get('/', (req, res)=>{
-    res.render('home.hbs',{
-        pageTitle: "Home",
-        getCurrentYear: year=new Date().getFullYear(),
-        active: "home",
-    });
-});
-
-//Getting MyAccountPage
-app.get('/MyAccount', (req, res)=>{
-    res.render('myAccount.hbs', {
-        pageTitle: "MyAccount",
-        getCurrentYear: year=new Date().getFullYear(),
-        active: "myAccount",
-    });
-});
-
-app.get('/help', (req, res)=>{
-    res.render('help.hbs', {
-        pageTitle: "Help",
-        getCurrentYear: year=new Date().getFullYear(),
-        active: "help",
-    });
-});
-
-app.get('/about', (req, res)=>{
-    res.render('about.hbs', {
-        pageTitle: "About",
-        getCurrentYear: year=new Date().getFullYear(),
-        active: "about",
-    });
-});
