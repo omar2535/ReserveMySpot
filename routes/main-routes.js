@@ -21,6 +21,7 @@ module.exports = function(app){
             pageTitle: "MyAccount",
             getCurrentYear: year=new Date().getFullYear(),
             active: "myAccount",
+            
         });
     });
 
@@ -41,6 +42,5 @@ module.exports = function(app){
             active: "about",
         });
     });
-
 
 };

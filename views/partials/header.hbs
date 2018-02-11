@@ -5,7 +5,11 @@
 
         {{#ifCond active "home"}}
             <a id = "home" class="active" href="/">Home</a>
+            {{#if User }}
             <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            {{else }}
+            <a id = "login" style="float:right" href = "auth/login">Login</a>
+            {{/if}}
             <a id = "help" href="Help">Help</a>
             <a id = "about" href="About">About</a>
         {{/ifCond}}  

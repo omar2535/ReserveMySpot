@@ -13,12 +13,15 @@ const keys = require('./config/keys');
 const session = require('express-session');
 const mongoose = require('mongoose');
 
+app.set('view engine', 'hbs');
 //Initialize the routes this app will do
-require('./routes')(app);                             
+require('./routes/main-routes')(app);                             
 const authRoutes = require('./routes/oauthroutes'); 
+app.use('/auth', authRoutes);
+
 
 //Initialize handlebars 
-app.set('view enginer', 'hbs');
+
 
 //To use CSS files:
 app.use(express.static(path.join(__dirname + '/public')));
@@ -43,12 +46,7 @@ mongoose.connect(keys.mongodb.dbURI, ()=>{
 //Setting the pathnames and middleware
 hbs.registerPartials(__dirname + '/views/partials');
 
-hbs.registerHelper('ifCond', function(v1, v2, options) {
-    if(v1 === v2) {
-      return options.fn(this);
-    }
-    return options.inverse(this);
-  });
+
 
 //Port number and start listening on PORT
 const PORT = 3000;
@@ -56,5 +54,11 @@ app.listen(PORT, ()=>{
     console.log("app listening on port: "+ PORT);
 });
 
-
+//Register if condition for handebars 
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 
