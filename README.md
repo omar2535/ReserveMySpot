@@ -7,6 +7,9 @@ Here is a list of dependancies:
 * MongoDB
 * bodyParser
 * handlebars
+* express-session
+* mongoose
+* passport-google-oauth
 
 To run, in command prompt, navigate to the directory and enter:
 
