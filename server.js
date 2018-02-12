@@ -12,15 +12,12 @@ const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;  //passpo
 const keys = require('./config/keys');
 const session = require('express-session');
 const mongoose = require('mongoose');
+const passportSetup = require('./config/passport-setup');
 
+//set to use handlebars as view engine
 app.set('view engine', 'hbs');
-//Initialize the routes this app will do
-require('./routes/main-routes')(app);                             
-const authRoutes = require('./routes/oauthroutes'); 
-app.use('/auth', authRoutes);
 
-
-//Initialize handlebars 
+ 
 
 
 //To use CSS files:
@@ -32,11 +29,14 @@ app.use(session({
   resave :false,
   saveUninitialized: true,
 }));
-
-
 //Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+//Initialize the routes this app will do
+require('./routes/main-routes')(app);                             
+const authRoutes = require('./routes/oauthroutes'); 
+app.use('/auth', authRoutes);
 
 //Initialize Mongoose to connect to DB using URI in keys
 mongoose.connect(keys.mongodb.dbURI, ()=>{

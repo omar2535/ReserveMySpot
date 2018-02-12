@@ -7,6 +7,7 @@
             <a id = "home" class="active" href="/">Home</a>
             {{#if User }}
             <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            <a id = "logout" style = "float: right" href = "auth/logout"> Logout </a>
             {{else }}
             <a id = "login" style="float:right" href = "auth/login">Login</a>
             {{/if}}
@@ -16,24 +17,51 @@
 
         {{#ifCond active "myAccount"}}
             <a id = "home" href="/">Home</a>
-            <a id = "myaccount" style="float:right" class="active" href="MyAccount">My Account</a>
+            {{#if User }}
+            <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            <a id = "logout" style = "float: right" href = "auth/logout"> Logout </a>
+            {{else }}
+            <a id = "login" style="float:right" href = "auth/login">Login</a>
+            {{/if}}
             <a id = "help" href="Help">Help</a>
             <a id = "about" href="About">About</a>
         {{/ifCond}}    
 
         {{#ifCond active "help"}}
             <a id = "home" href="/">Home</a>
+            {{#if User }}
             <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            <a id = "logout" style = "float: right" href = "auth/logout"> Logout </a>
+            {{else }}
+            <a id = "login" style="float:right" href = "auth/login">Login</a>
+            {{/if}}
             <a id = "help" class="active" href="Help">Help</a>
             <a id = "about" href="About">About</a>
         {{/ifCond}}    
 
         {{#ifCond active "about"}}
             <a id = "home" href="/">Home</a>
+            {{#if User }}
             <a id = "myaccount" style="float:right" href="MyAccount">My Account</a>
+            <a id = "logout" style = "float: right" href = "auth/logout"> Logout </a>
+            {{else }}
+            <a id = "login" style="float:right" href = "auth/login">Login</a>
+            {{/if}}
             <a id = "help" href="Help">Help</a>
             <a id = "about" class="active"href="About">About</a>
         {{/ifCond}}    
+
+        {{#ifCond active "login"}}
+            <a id = "home" href="/">Home</a>
+            {{#if User }}
+            <a id = "myaccount" style="float:right" href="../MyAccount">My Account</a>
+            <a id = "logout" style = "float: right" href = "/logout"> Logout </a>
+            {{else }}
+            <a id = "login" class = "active" style="float:right" href = "/auth/login">Login</a>
+            {{/if}}
+            <a id = "help" href="../Help">Help</a>
+            <a id = "about" href="../About">About</a>
+        {{/ifCond}}  
 
     </div>
 </head>
