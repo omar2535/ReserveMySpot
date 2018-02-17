@@ -14,6 +14,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const passportSetup = require('./config/passport-setup');
 
+
 //set to use handlebars as view engine
 app.set('view engine', 'hbs');
 
