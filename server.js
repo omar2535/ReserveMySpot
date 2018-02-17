@@ -35,17 +35,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Initialize the routes this app will do
+
 require('./routes/main-routes')(app);
 const authRoutes = require('./routes/oauthroutes');
+
 app.use('/auth', authRoutes);
 
 //Initialize Mongoose to connect to DB using URI in keys
 mongoose.connect(keys.mongodb.dbURI, () => {
   console.log('connected to monbodb');
 });
-
-
-
 
 //Port number and start listening on PORT
 const PORT = 3000;

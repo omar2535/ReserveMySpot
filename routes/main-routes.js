@@ -27,7 +27,6 @@ module.exports = function (app) {
             getCurrentYear: year = new Date().getFullYear(),
             active: "myAccount",
             User: req.user,
-
         });
     });
 
