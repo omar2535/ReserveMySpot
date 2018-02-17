@@ -10,13 +10,34 @@
 <link rel="stylesheet" href="../css/shared.css" type = "text/css"/>
 
 {{> header}}
-
+<style>
+    .google-btn{
+                color: #fff;
+                text-decoration: none;
+                font-size: 30px;
+                padding: 10px;
+                background: #ff5353;
+                border-radius: 10px;
+                
+            }
+    .login-buttons{
+        text-align: center;
+    }
+    .login-text{
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+    }
+</style>
 
 <body>
-    <ul>
-        Log in using: 
-        <li> <a class="google-btn" href="/auth/google">Google+</a> </li>
-    </ul>
+
+        <div class = "login-buttons"> 
+
+            <p class="login-text"><h3> Log in using: </h3></p>
+            <a class="google-btn" href="/auth/google">Google+</a> 
+        
+        </div>
+
 
 </body>
 
