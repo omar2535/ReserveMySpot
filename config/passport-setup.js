@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./keys');
@@ -26,8 +28,10 @@ passport.use(
         callbackURL: '/auth/google/redirect'
     }, (accessToken, refreshToken, profile, done) => {
         // check if user already exists in our own db
-        User.findOne({googleId: profile.id}).then((currentUser) => {
-            if(currentUser){
+        User.findOne({
+            googleId: profile.id
+        }).then((currentUser) => {
+            if (currentUser) {
                 // already have this user
                 console.log('User exists: ', currentUser);
                 done(null, currentUser);
@@ -36,7 +40,9 @@ passport.use(
                 new User({
                     googleId: profile.id,
                     username: profile.displayName,
-                    thumbnail: profile._json.image.url
+                    thumbnail: profile._json.image.url,
+                    firstName: profile.name.givenName,
+                    lastName: profile.name.familyName,
                 }).save().then((newUser) => {
                     console.log('Created new user: ', newUser);
                     done(null, newUser);

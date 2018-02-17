@@ -13,10 +13,16 @@
 
 <body>
     <div class = "mainPage">
-        <p> Welcome to this reservation software!</p>
-        <p> To make a reservation, scroll down</p>
-        <p> To check up on an existing reservation, click<a href ="MyAccount"> my account</a></p>
-        <p> Have a nice day</p>
+        {{#if User}}
+            <p> Welcome, {{User.firstName }} to this reservation software!</p>
+            <p> To make a reservation, scroll down</p>
+            <p> To check up on an existing reservation, click<a href ="MyAccount"> my account</a></p>
+            <p> Have a nice day</p>
+        {{else}}
+            <p>This is a website to make reservations</p>
+            <p>To make a reservation, you must first create an account <a href = "auth/login">here</a></p>
+        {{/if }}
+        
     </div>
 </body>
 
