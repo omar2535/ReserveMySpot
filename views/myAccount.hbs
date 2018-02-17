@@ -11,13 +11,26 @@
 
 {{> header}}
 
+<style>
+    .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    }
+
+</style>
 
 <body>
     <div class = "MyAccount">
-        <p> This is your account page</p>
+        <div class = "center"><img id = "profile-pict" src = {{User.thumbnail}}></div>
+        <div class = "center">
+            <p> Hello {{User.firstName}}</p>
+            <p> Here are your upcoming reservations: </p>
+        </div>
+        {{> calendar}}
     </div>
 </body>
-
 
 
 {{> footer}}
