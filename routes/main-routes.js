@@ -12,6 +12,7 @@ module.exports = function(app){
             pageTitle: "Home",
             getCurrentYear: year=new Date().getFullYear(),
             active: "home",
+            User: req.user,
         });
     });
 
@@ -21,6 +22,7 @@ module.exports = function(app){
             pageTitle: "MyAccount",
             getCurrentYear: year=new Date().getFullYear(),
             active: "myAccount",
+            User: req.user,
             
         });
     });
@@ -31,6 +33,7 @@ module.exports = function(app){
             pageTitle: "Help",
             getCurrentYear: year=new Date().getFullYear(),
             active: "help",
+            User: req.user,
         });
     });
 
@@ -40,6 +43,7 @@ module.exports = function(app){
             pageTitle: "About",
             getCurrentYear: year=new Date().getFullYear(),
             active: "about",
+            User: req.user,
         });
     });
 

@@ -1,17 +1,23 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./keys');
+const User = require('../models/user-models');
 
+//saves user to session - authentication is only done once on login
+//after that, the user information is stored as a cookie in the session
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
+//attaches user object to request
+//will take the session's user object and attach to request 
 passport.deserializeUser((id, done) => {
     User.findById(id).then((user) => {
         done(null, user);
     });
 });
 
+//allow passport to use google strategy
 passport.use(
     new GoogleStrategy({
         // options for google strategy
@@ -23,7 +29,7 @@ passport.use(
         User.findOne({googleId: profile.id}).then((currentUser) => {
             if(currentUser){
                 // already have this user
-                console.log('user is: ', currentUser);
+                console.log('User exists: ', currentUser);
                 done(null, currentUser);
             } else {
                 // if not, create user in our db
@@ -32,7 +38,7 @@ passport.use(
                     username: profile.displayName,
                     thumbnail: profile._json.image.url
                 }).save().then((newUser) => {
-                    console.log('created new user: ', newUser);
+                    console.log('Created new user: ', newUser);
                     done(null, newUser);
                 });
             }

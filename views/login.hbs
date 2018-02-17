@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+
+<!-- Latest versions of Bootstrap, jquery, and css-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/myAccount.css" type = "text/css"/>
+<link rel="stylesheet" href="../css/shared.css" type = "text/css"/>
+
+{{> header}}
+<style>
+    .google-btn{
+                color: #fff;
+                text-decoration: none;
+                font-size: 30px;
+                padding: 10px;
+                background: #ff5353;
+                border-radius: 10px;
+                
+            }
+    .login-buttons{
+        text-align: center;
+    }
+    .login-text{
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+    }
+</style>
+
+<body>
+
+        <div class = "login-buttons"> 
+
+            <p class="login-text"><h3> Log in using: </h3></p>
+            <a class="google-btn" href="/auth/google">Google+</a> 
+        
+        </div>
+
+
+</body>
+
+
+
+{{> footer}}
+
+
+
+
+</html>
