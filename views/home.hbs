@@ -20,12 +20,13 @@
             <p> To check up on an existing reservation, click<a href ="MyAccount"> my account</a></p>
             <p> Have a nice day</p>
 
+            {{!-- to check if the reservation was successfully added --}}
             {{#ifCond status "success"}}
                 <p id = "success-response"> Success!</p>
             {{/ifCond }}
 
             {{#ifCond status "failed"}}
-                <p id = "success-response"> Failed! Already reserved</p>
+                <p id = "failed-response"> Failed! Already reserved</p>
             {{/ifCond }}
 
             <form action="/" method="post">
@@ -39,6 +40,7 @@
             <input type="submit" value="OK">
             </form>
 
+        {{!-- If not logged in, can't add any reservation --}}  
         {{else}}
             <p>This is a website to make reservations</p>
             <p>To make a reservation, you must first create an account <a href = "auth/login">here</a></p>

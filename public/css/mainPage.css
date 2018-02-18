@@ -12,7 +12,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    color: red;
+    color: greenyellow;
     margin-top: 20px;
 
      animation:success-response 0.5s 1;
@@ -34,3 +34,21 @@
     from {opacity :1;}
     to {opacity :0;}
 }
+
+#failed-response{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: red;
+    margin-top: 20px;
+
+     animation:success-response 0.5s 1;
+    -webkit-animation:success-response 0.5s 1;
+    animation-fill-mode: forwards;
+
+    animation-delay:2s;
+    -webkit-animation-delay:1s; /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+
+} 
