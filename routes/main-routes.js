@@ -24,12 +24,24 @@ module.exports = function (app) {
 
     //Getting MyAccountPage
     app.get('/MyAccount', (req, res) => {
-        res.render('myAccount.hbs', {
-            pageTitle: "MyAccount",
-            getCurrentYear: year = new Date().getFullYear(),
-            active: "myAccount",
-            User: req.user,
-        });
+        if(req.user){
+
+            Reservation.find({
+                googleId: req.user.googleId,
+            }).then((reservations)=>{
+                res.render('myAccount.hbs', {
+                    pageTitle: "MyAccount",
+                    getCurrentYear: year = new Date().getFullYear(),
+                    active: "myAccount",
+                    User: req.user,
+                    Reservations: reservations,
+                });
+            });
+
+            
+        }else{
+            res.redirect('/');
+        }
     });
 
     //Getting help page
@@ -65,9 +77,16 @@ module.exports = function (app) {
                 var status = encodeURIComponent('failed');
                 res.redirect('/?status=' + status);
             }else{
+                //To store date as year-month-day format
+                var str = req.body.date_field.toString();
+                var arr = [];
+                arr = str.split('-');
                 new Reservation({
                     googleId: req.user.googleId,
-                    date: req.body.date_field,
+                    name: req.user.firstName,
+                    year: arr[0],
+                    month: arr[1],
+                    date: arr[2],
                     location: req.body.location_field,
                     time: req.body.time_field,
                 }).save().then((newReservation)=>{
