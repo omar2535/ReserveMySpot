@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const reservationSchema = new Schema({
     googleId: String,
     date: Date,
+    time: String,
     location: String,
 
 });

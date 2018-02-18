@@ -33,7 +33,7 @@ passport.use(
         }).then((currentUser) => {
             if (currentUser) {
                 // already have this user
-                console.log('User exists: ', currentUser);
+                console.log('User exists: ', currentUser.googleId);
                 done(null, currentUser);
             } else {
                 // if not, create user in our db

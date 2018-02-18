@@ -54,16 +54,29 @@ module.exports = function (app) {
 
     //When posting about reservation data
     app.post('/', urlEncodedParser, (req, res)=>{
-
-        new Reservation({
-            googleId: req.user.googleId,
+        Reservation.findOne({
             date: req.body.date_field,
+            time: req.body.time_field,
             location: req.body.location_field,
-        }).save().then((newReservation)=>{
-            console.log("created new reservation: ", newReservation);
-            var status = encodeURIComponent('success');
-            res.redirect('/?status=' + status);
+        }).then((currenReservation)=>{
+            if(currenReservation){
+                console.log("already exists", 
+                currenReservation.date, currenReservation.time, currenReservation.location);
+                var status = encodeURIComponent('failed');
+                res.redirect('/?status=' + status);
+            }else{
+                new Reservation({
+                    googleId: req.user.googleId,
+                    date: req.body.date_field,
+                    location: req.body.location_field,
+                    time: req.body.time_field,
+                }).save().then((newReservation)=>{
+                    console.log("created new reservation: ", newReservation);
+                    var status = encodeURIComponent('success');
+                    res.redirect('/?status=' + status);
+                });
+            }
         });
-        
+
     });
 };
