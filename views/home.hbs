@@ -18,6 +18,20 @@
             <p> To make a reservation, scroll down</p>
             <p> To check up on an existing reservation, click<a href ="MyAccount"> my account</a></p>
             <p> Have a nice day</p>
+
+            <form action="/" method="post">
+            <label for="date">Enter date: </label>
+            <input id="date" type="date" name="date_field">
+            <lable for="location">Enter location: </lable>
+            <input id="location" type = "text" name = "location_field" value = "Vancouver">
+            <input type="submit" value="OK">
+            </form>
+
+
+
+
+
+
         {{else}}
             <p>This is a website to make reservations</p>
             <p>To make a reservation, you must first create an account <a href = "auth/login">here</a></p>

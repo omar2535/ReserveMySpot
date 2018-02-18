@@ -1,12 +1,13 @@
 /*jshint esversion: 6 */
 
 /*
- 
 This file is for pure routes for the website.
 Redirects to 4 main pages: Home, MyAccount, Help, and About
-
 */
 
+const bodyParser = require('body-parser'); //To parse URL information
+const urlEncodedParser = bodyParser.urlencoded({extended: false});
+const Reservation = require('../models/reservation-models');
 
 module.exports = function (app) {
 
@@ -48,5 +49,16 @@ module.exports = function (app) {
             active: "about",
             User: req.user,
         });
+    });
+    //When posting about reservation data
+    app.post('/', urlEncodedParser, (req, res)=>{
+        new Reservation({
+            googleId: req.user.googleId,
+            date: req.body.date_field,
+            location: req.body.location_field,
+        }).save().then((newReservation)=>{
+            console.log("created new reservation: ", newReservation);
+            res.redirect('/');
+        })
     });
 };
