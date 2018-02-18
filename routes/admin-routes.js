@@ -3,22 +3,43 @@
 /*
 This file is for admin routes
 */
-const router = require('express').Router();
+const adminRouter = require('express').Router();
 const bodyParser = require('body-parser'); //To parse URL information
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const Reservation = require('../models/reservation-models');
 
+//Route for homepage on adminpage
+adminRouter.get('/', (req, res)=>{
+    if(req.user && req.user.isAdmin == true){           
+        //Do admin stuff here
 
-router.get('/', (req, res)=>{
-    if(req.user){
-        if(req.user.isAdmin == true){
-            res.send("<h1>You are authorized</h1>");
-        }else{
-            res.send("<h1>Your account does not have admin rights");
-        }
+        
     }else{
         res.send("<h1>You are NOT authorized</h1>");
     }
 });
 
-module.exports = router;
+//Route for settings of site-settings
+adminRouter.get('/settings', (req, res)=>{
+    if(req.user && req.user.isAdmin == true){           
+        //Do admin stuff here
+
+        
+    }else{
+        res.send("<h1>You are NOT authorized</h1>");
+    }
+});
+
+//Route to add new schedules available for reservation
+adminRouter.get('/add', (req, res)=>{
+    if(req.user && req.user.isAdmin == true){           
+        //Do admin stuff here
+
+        
+    }else{
+        res.send("<h1>You are NOT authorized</h1>");
+    }
+});
+
+
+module.exports = adminRouter;
