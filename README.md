@@ -17,7 +17,7 @@ Here is a list of dependancies:
 To run, in command prompt, navigate to the directory and enter:
 
 ```cmd
-
+npm install 
 nodejs server.js
 
 ```
