@@ -39,8 +39,10 @@ app.use(passport.session());
 
 require('./routes/main-routes')(app);
 const authRoutes = require('./routes/oauthroutes');
+const adminRoutes = require('./routes/admin-routes');
 
 app.use('/auth', authRoutes);
+app.use('/admin', adminRoutes);
 
 //Initialize Mongoose to connect to DB using URI in keys
 mongoose.connect(keys.mongodb.dbURI, () => {

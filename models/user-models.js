@@ -9,6 +9,7 @@ const userSchema = new Schema({
     thumbnail: String,
     firstName: String,
     lastName: String,
+    isAdmin: {type: Boolean, default: false}
 });
 const User = mongoose.model('user', userSchema);
 
