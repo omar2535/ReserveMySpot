@@ -23,8 +23,8 @@ nodejs server.js
 ```
 then navigate to http://localhost:3000/ in any browser
 
-##FAQ
-It's not running and is giving me a lot of errors?
+## FAQ
+**It's not running and is giving me a lot of errors?**  
 You are missing a file called keys.js. This file should follow the format of: 
 
 ```javascript
