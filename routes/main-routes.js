@@ -38,30 +38,40 @@ module.exports = function (app) {
                 });
             });
 
-            
         }else{
-            res.redirect('/');
+            var status = encodeURIComponent('unregistered');
+            res.redirect('/?status='+ status);
         }
     });
 
     //Getting help page
     app.get('/help', (req, res) => {
-        res.render('help.hbs', {
-            pageTitle: "Help",
-            getCurrentYear: year = new Date().getFullYear(),
-            active: "help",
-            User: req.user,
-        });
+        if(req.user){
+            res.render('help.hbs', {
+                pageTitle: "Help",
+                getCurrentYear: year = new Date().getFullYear(),
+                active: "help",
+                User: req.user,
+            });
+        }else{
+            var status = encodeURIComponent('unregistered');
+            res.redirect('/?status='+ status);
+        }
     });
 
     //Getting about page
     app.get('/about', (req, res) => {
-        res.render('about.hbs', {
-            pageTitle: "About",
-            getCurrentYear: year = new Date().getFullYear(),
-            active: "about",
-            User: req.user,
-        });
+        if(req.user){
+            res.render('about.hbs', {
+                pageTitle: "About",
+                getCurrentYear: year = new Date().getFullYear(),
+                active: "about",
+                User: req.user,
+            });
+        }else{
+            var status = encodeURIComponent('unregistered');
+            res.redirect('/?status='+ status);
+        }
     });
 
     //When posting about reservation data
