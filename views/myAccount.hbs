@@ -47,23 +47,20 @@
 
                 <tr>
                     <th>Name</th>
-                    <th>Year</th> 
-                    <th>Month</th>
-                    <th>Day</th>
-                    <th>Time</th>
+                    <th>Date(YYYY-MM-DD)</th>
+                    <th>Time(24hrs)</th>
                     <th>Location</th>
                 </tr>
             {{#each Reservations}}
             <tr>
                 <td>{{name}}</td>
-                <td>{{year}}</td>
-                <td>{{month}}</td>
-                <td>{{date}}</td>
+                <td>{{year}}/{{month}}/{{date}}</td>
                 <td>{{time}}</td>
                 <td>{{location}}</td>
+            </tr>   
             {{/each}}
 
-            </tr>   
+            
 
             </table>
 
