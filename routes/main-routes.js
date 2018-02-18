@@ -18,6 +18,7 @@ module.exports = function (app) {
             getCurrentYear: year = new Date().getFullYear(),
             active: "home",
             User: req.user,
+            status: req.query.status,
         });
     });
 
@@ -50,15 +51,19 @@ module.exports = function (app) {
             User: req.user,
         });
     });
+
     //When posting about reservation data
     app.post('/', urlEncodedParser, (req, res)=>{
+
         new Reservation({
             googleId: req.user.googleId,
             date: req.body.date_field,
             location: req.body.location_field,
         }).save().then((newReservation)=>{
             console.log("created new reservation: ", newReservation);
-            res.redirect('/');
-        })
+            var status = encodeURIComponent('success');
+            res.redirect('/?status=' + status);
+        });
+        
     });
 };
