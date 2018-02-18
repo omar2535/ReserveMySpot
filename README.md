@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/omar2535/ReserveMySpot.svg?branch=master)](https://travis-ci.org/omar2535/ReserveMySpot)
 
-(https://img.shields.io/npm/v/npm.svg)
+![Build Status](https://img.shields.io/npm/v/npm.svg)
 
 # ReserveMySpot
 
