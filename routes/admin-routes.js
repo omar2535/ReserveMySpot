@@ -11,7 +11,7 @@ const Reservation = require('../models/reservation-models');
 //Route for homepage on adminpage
 adminRouter.get('/', (req, res)=>{
     if(req.user && req.user.isAdmin == true){           
-        //Do admin stuff here
+        res.render('admin-panel.hbs');
 
         
     }else{
@@ -23,7 +23,7 @@ adminRouter.get('/', (req, res)=>{
 adminRouter.get('/settings', (req, res)=>{
     if(req.user && req.user.isAdmin == true){           
         //Do admin stuff here
-
+        
         
     }else{
         res.send("<h1>You are NOT authorized</h1>");
