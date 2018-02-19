@@ -10,12 +10,14 @@ const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const Reservation = require('../models/reservation-models');
 
 module.exports = function (app) {
+    //variable for date
+    var year = new Date().getFullYear();
 
     //Getting homepage and returning
     app.get('/', (req, res) => {
         res.render('home.hbs', {
             pageTitle: "Home",
-            getCurrentYear: year = new Date().getFullYear(),
+            getCurrentYear: year,
             active: "home",
             User: req.user,
             status: req.query.status,
@@ -31,7 +33,7 @@ module.exports = function (app) {
             }).then((reservations)=>{
                 res.render('myAccount.hbs', {
                     pageTitle: "MyAccount",
-                    getCurrentYear: year = new Date().getFullYear(),
+                    getCurrentYear: year,
                     active: "myAccount",
                     User: req.user,
                     Reservations: reservations,
@@ -49,7 +51,7 @@ module.exports = function (app) {
         if(req.user){
             res.render('help.hbs', {
                 pageTitle: "Help",
-                getCurrentYear: year = new Date().getFullYear(),
+                getCurrentYear: year,
                 active: "help",
                 User: req.user,
             });
@@ -64,7 +66,7 @@ module.exports = function (app) {
         if(req.user){
             res.render('about.hbs', {
                 pageTitle: "About",
-                getCurrentYear: year = new Date().getFullYear(),
+                getCurrentYear: year,
                 active: "about",
                 User: req.user,
             });
