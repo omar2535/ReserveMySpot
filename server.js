@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 const passportSetup = require('./config/passport-setup');
 
 
+
 //set to use handlebars as view engine
 app.set('view engine', 'hbs');
 
@@ -31,6 +32,12 @@ app.use(session({
   saveUninitialized: true,
 }));
 
+//Port number and start listening on PORT
+const PORT = 3000;
+var server = app.listen(PORT, () => {
+  console.log("app listening on port: " + PORT);
+});
+
 //Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -40,6 +47,7 @@ app.use(passport.session());
 require('./routes/main-routes')(app);
 const authRoutes = require('./routes/oauthroutes');
 const adminRoutes = require('./routes/admin-routes');
+const sockets = require('./utils/sockets')(server);
 
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
@@ -49,8 +57,3 @@ mongoose.connect(keys.mongodb.dbURI, () => {
   console.log('connected to monbodb');
 });
 
-//Port number and start listening on PORT
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log("app listening on port: " + PORT);
-});

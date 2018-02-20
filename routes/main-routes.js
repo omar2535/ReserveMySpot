@@ -9,6 +9,7 @@ const bodyParser = require('body-parser'); //To parse URL information
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const Reservation = require('../models/reservation-models');
 
+
 module.exports = function (app) {
     //variable for date
     var year = new Date().getFullYear();
@@ -110,4 +111,5 @@ module.exports = function (app) {
         });
 
     });
+
 };
