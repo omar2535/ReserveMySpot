@@ -16,6 +16,7 @@ Here is a list of dependancies:
 * express-session
 * mongoose
 * passport-google-oauth
+* socket.io
 
 To run, in command prompt, navigate to the directory and enter:
 
