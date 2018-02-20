@@ -5,18 +5,18 @@ const socket = require('socket.io');
 
 
 module.exports = function(server){
-        //Socket setup
+    //Socket setup
     var io = socket(server);
     io.on('connection',(socket)=>{
-        console.log('made socket connection');
+        console.log('Chat socket connection initialized by ' + socket.id);
 
         socket.on('chat', (data)=>{
-            console.log('recieved chat data');
+            //console.log('recieved chat data');
             io.emit('chat', data);
         });
 
         socket.on('typing', (data)=>{
-            console.log('someone is typing');
+            //console.log('someone is typing');
             socket.broadcast.emit('typing', data);
         });
 
