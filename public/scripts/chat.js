@@ -1,4 +1,6 @@
-//Make connectoin
+/*jshint esversion: 6 */
+
+//Make connection
 var socket = io.connect('http://localhost:3000/');
 
 //Query DOM
@@ -8,8 +10,7 @@ var button = document.getElementById('send');
 var output = document.getElementById('output');
 var feedback = document.getElementById('feedback');
 
-//Emit events
-
+//emit even for broadcasting message when submitted form
 button.addEventListener('click', ()=>{
     socket.emit('chat', {
         message: message.value,
@@ -18,11 +19,22 @@ button.addEventListener('click', ()=>{
     message.value = "";
 });
 
+//Emit button event when enter is pressed
+message.addEventListener('keyup', (event)=>{
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        button.click();
+    }
+});
+
+//emit event for keypress when typing
 message.addEventListener('keypress', ()=>{
     socket.emit('typing', {
         user: handle.value,
     });
+    
 });
+
 
 //listen for events
 socket.on('chat', (data)=>{
@@ -33,4 +45,10 @@ socket.on('chat', (data)=>{
 socket.on('typing', (data)=>{
     feedback.innerHTML = '<p><em>' + data.user + ' is typing a message </em></p>';
 });
+
+
+//To check if user is typing anymore
+window.setInterval(function(){
+    feedback.innerHTML = "";
+  }, 5000);
 
