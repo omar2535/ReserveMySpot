@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/omar2535/ReserveMySpot.svg?branch=master)](https://travis-ci.org/omar2535/ReserveMySpot)
 ![Build Status](https://img.shields.io/npm/v/npm.svg)
-[![dependencies Status](https://david-dm.org/expressjs/express/status.svg)](https://david-dm.org/expressjs/express)
+[![dependencies Status](https://david-dm.org/omar2535/ReserveMySpot.svg)](https://david-dm.org/expressjs/express)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4d8fb565a37adfd99f4e/maintainability)](https://codeclimate.com/github/omar2535/ReserveMySpot/maintainability)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
