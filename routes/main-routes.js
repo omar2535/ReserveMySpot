@@ -16,6 +16,15 @@ const mainRouter = require('express').Router();
 //variable for date
 var year = new Date().getFullYear();
 
+//declaration for data object
+var data = {
+    pageTitle: String,
+    getCurrentYear: year, 
+    active: String,
+    User: Object,
+    status: String,
+};
+
 //Getting homepage and returning
 mainRouter.get('/', (req, res) => {
     res.render('home.hbs', {
@@ -51,12 +60,9 @@ mainRouter.get('/MyAccount', (req, res) => {
 //Getting help page
 mainRouter.get('/help', (req, res) => {
 
-    var data = {
-        pageTitle: "Help",
-        getCurrentYear: year,
-        active: "help",
-        User: req.user,
-    };
+    data.pageTitle = "Help";
+    data.active = "help";
+    data.User = req.user;
     renderIfUser(req, res, 'help.hbs', data);
 
 
@@ -64,12 +70,10 @@ mainRouter.get('/help', (req, res) => {
 
 //Getting about page
 mainRouter.get('/about', (req, res) => {
-    var data = {
-        pageTitle: "About",
-        getCurrentYear: year,
-        active: "about",
-        User: req.user,
-    };
+
+    data.pageTitle = "About";
+    data.active = "about";
+    data.user = req.user;
     renderIfUser(req, res, 'about.hbs', data);
 
 });
