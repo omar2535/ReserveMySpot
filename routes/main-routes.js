@@ -39,6 +39,9 @@ mainRouter.get('/', (req, res) => {
 //Getting MyAccountPage
 mainRouter.get('/MyAccount', (req, res) => {
     if (req.user) {
+        //Once in account, user object for data remains
+        data.User = req.user;
+        //Find reservation
         Reservation.find({
             googleId: req.user.googleId,
         }).then((reservations) => {
@@ -62,7 +65,7 @@ mainRouter.get('/help', (req, res) => {
 
     data.pageTitle = "Help";
     data.active = "help";
-    data.User = req.user;
+    
     renderIfUser(req, res, 'help.hbs', data);
 
 
@@ -73,7 +76,7 @@ mainRouter.get('/about', (req, res) => {
 
     data.pageTitle = "About";
     data.active = "about";
-    data.User = req.user;
+
     renderIfUser(req, res, 'about.hbs', data);
 
 });
