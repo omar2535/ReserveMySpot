@@ -12,7 +12,7 @@ const Reservation = require('../models/reservation-models');
 adminRouter.get('/', (req, res)=>{
     if(req.user && req.user.isAdmin == true){           
         res.render('admin-panel.hbs');
-
+            
         
     }else{
         res.send("<h1>You are NOT authorized</h1>");
