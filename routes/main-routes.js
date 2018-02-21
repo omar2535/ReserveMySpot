@@ -73,7 +73,7 @@ mainRouter.get('/about', (req, res) => {
 
     data.pageTitle = "About";
     data.active = "about";
-    data.user = req.user;
+    data.User = req.user;
     renderIfUser(req, res, 'about.hbs', data);
 
 });
