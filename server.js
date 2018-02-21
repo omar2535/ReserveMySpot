@@ -44,11 +44,12 @@ app.use(passport.session());
 
 //Initialize the routes this app will do
 
-require('./routes/main-routes')(app);
+const mainRoutes = require('./routes/main-routes');
 const authRoutes = require('./routes/oauthroutes');
 const adminRoutes = require('./routes/admin-routes');
 const sockets = require('./utils/sockets')(server);
 
+app.use('/', mainRoutes);
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 
