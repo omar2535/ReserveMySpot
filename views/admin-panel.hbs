@@ -8,39 +8,9 @@
 <link rel="stylesheet" href="/css/admin-shared.css" type = "text/css"/>
 
 
-<style>
-        h1{
-                text-align: center;
-        }
+{{> adminHeader}}
 
-        .center {
-        margin: auto;
-        width: 50%;
-        padding: 10px;
-        text-align: center;
-        }
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        border-spacing: 5px;
-        }
-        th, td {
-        padding: 15px;
-        }
-        th {
-        text-align: left;
-        }
-</style>
-
-
-
-<div class="navbar">
-        <a id = "admin-panel" href="/admin">admin-panel</a>    
-        <a id = "settings" href="/admin/settings">settings</a>
-        <a id = "add" href="admin/add">add</a>
-        <a id = "home" style="float:right" href = "/">Home</a>
-</div>
-
+{{#if status}}
 <div id = "status-check">
     {{#ifCond status "success"}}
         <p id = "success-response"> Success!</p>
@@ -50,6 +20,7 @@
         <p id = "failed-response"> Failed! Already exists</p>
     {{/ifCond }}
 </div> 
+{{/if}}
 
 <body>
 
