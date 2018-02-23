@@ -57,4 +57,3 @@ app.use('/admin', adminRoutes);
 mongoose.connect(keys.mongodb.dbURI, () => {
   console.log('connected to monbodb');
 });
-
