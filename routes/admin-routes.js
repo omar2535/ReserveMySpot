@@ -8,10 +8,25 @@ const bodyParser = require('body-parser'); //To parse URL information
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 const Reservation = require('../models/reservation-models');
 const adminUtils = require('../utils/admin-utils');
+const url = require('url');    
+
+//variable for date
+var year = new Date().getFullYear();
 
 //Route for homepage on adminpage
 adminRouter.get('/', (req, res)=>{
-    adminUtils.renderIfAdmin(req, res, 'admin-panel.hbs');
+    Reservation.find({
+
+    }).then((reservations) => {
+    
+        adminUtils.renderIfAdmin(req, res, 'admin-panel.hbs', {
+            getCurrentYear: year,
+            Reservations: reservations,
+        });    
+        
+    });
+
+
 });
 
 //Route to get form data from admin panel
@@ -25,7 +40,12 @@ adminRouter.post('/', urlEncodedParser, (req, res)=>{
             console.log("already exists",
                 currenReservation.date, currenReservation.time, currenReservation.location);
             var status = encodeURIComponent('failed');
-            res.redirect('/?status=' + status);
+            res.redirect(url.format({
+                pathname: "/admin/",
+                query: {
+                    "status": status,   
+                }
+            }));
         } else {
             //To store date as year-month-day format
             var str = req.body.date_field.toString();
@@ -41,8 +61,12 @@ adminRouter.post('/', urlEncodedParser, (req, res)=>{
                 time: req.body.time_field,
             }).save().then((newReservation) => {
                 console.log("created new reservation: ", newReservation);
-                var status = encodeURIComponent('success');
-                res.redirect('/?status=' + status);
+                res.redirect(url.format({
+                    pathname: "/admin/",
+                    query: {
+                        "status": 'success',   
+                    }
+                }));
             });
         }
     });

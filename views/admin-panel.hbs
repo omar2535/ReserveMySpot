@@ -5,11 +5,30 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/admin-shared.css" type = "text/css"/>
+<link rel="stylesheet" href="/css/admin-shared.css" type = "text/css"/>
+
 
 <style>
         h1{
                 text-align: center;
+        }
+
+        .center {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        text-align: center;
+        }
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        border-spacing: 5px;
+        }
+        th, td {
+        padding: 15px;
+        }
+        th {
+        text-align: left;
         }
 </style>
 
@@ -20,12 +39,42 @@
         <a id = "add" href="admin/add">add</a>
 </div>
 
+<body>
+
+ {{#ifCond status "success"}}
+                <p id = "success-response"> Success!</p>
+            {{/ifCond }}
+
+            {{#ifCond status "failed"}}
+                <p id = "failed-response"> Failed! Already reserved</p>
+            {{/ifCond }}
+
 <!-- This is the reservation form -->
 {{> reservationForm}}
 
 
 <h1> All Current Reservations: </h1>
+<table align="center">
 
+                <tr>
+                    <th>Name</th>
+                    <th>Date(YYYY-MM-DD)</th>
+                    <th>Time(24hrs)</th>
+                    <th>Location</th>
+                </tr>
+            {{#each Reservations}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{year}}/{{month}}/{{date}}</td>
+                <td>{{time}}</td>
+                <td>{{location}}</td>
+            </tr>   
+            {{/each}}
+
+            
+
+            </table>
+</body>
 
 {{> footer}}
 

@@ -1,8 +1,4 @@
-#myaccount{
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/16777216colors.png/220px-16777216colors.png");
-    border-top-right-radius: 25%;
-    border-top-left-radius: 10%;
-}
+
 /* Add a black background color to the top navigation */
 .navbar {
     background-color: rgb(255, 0, 0);

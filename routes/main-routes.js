@@ -81,42 +81,6 @@ mainRouter.get('/about', (req, res) => {
 
 });
 
-//When posting about reservation data
-mainRouter.post('/', urlEncodedParser, (req, res) => {
-    Reservation.findOne({
-        date: req.body.date_field,
-        time: req.body.time_field,
-        location: req.body.location_field,
-    }).then((currenReservation) => {
-        if (currenReservation) {
-            console.log("already exists",
-                currenReservation.date, currenReservation.time, currenReservation.location);
-            var status = encodeURIComponent('failed');
-            res.redirect('/?status=' + status);
-        } else {
-            //To store date as year-month-day format
-            var str = req.body.date_field.toString();
-            var arr = [];
-            arr = str.split('-');
-            new Reservation({
-                googleId: req.user.googleId,
-                name: req.user.firstName,
-                year: arr[0],
-                month: arr[1],
-                date: arr[2],
-                location: req.body.location_field,
-                time: req.body.time_field,
-            }).save().then((newReservation) => {
-                console.log("created new reservation: ", newReservation);
-                var status = encodeURIComponent('success');
-                res.redirect('/?status=' + status);
-            });
-        }
-    });
-
-});
-
-
 module.exports = mainRouter;
 
 //renders the page if user is logged in
