@@ -6,8 +6,9 @@ var renderIfAdmin = function(req, res, webPage){
     }else{
         res.send("<h1>You are NOT authorized</h1>");
     }
-}
+};
+
 
 module.exports = {
     renderIfAdmin: renderIfAdmin,
-}
+};
