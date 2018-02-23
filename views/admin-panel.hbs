@@ -54,26 +54,26 @@
 
 
 <h1> All Current Reservations: </h1>
-<table align="center">
+    <table align="center">
 
-                <tr>
-                    <th>Name</th>
-                    <th>Date(YYYY-MM-DD)</th>
-                    <th>Time(24hrs)</th>
-                    <th>Location</th>
-                </tr>
-            {{#each Reservations}}
-            <tr>
-                <td>{{name}}</td>
-                <td>{{year}}/{{month}}/{{date}}</td>
-                <td>{{time}}</td>
-                <td>{{location}}</td>
-            </tr>   
-            {{/each}}
+        <tr>
+            <th>Name</th>
+            <th>Date(YYYY-MM-DD)</th>
+            <th>Time(24hrs)</th>
+            <th>Location</th>
+        </tr>
+        {{#each Reservations}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{year}}/{{month}}/{{date}}</td>
+            <td>{{time}}</td>
+            <td>{{location}}</td>
+        </tr>   
+        {{/each}}
 
-            
+                
 
-            </table>
+    </table>
 </body>
 
 {{> footer}}

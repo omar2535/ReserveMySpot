@@ -27,12 +27,18 @@ var data = {
 
 //Getting homepage and returning
 mainRouter.get('/', (req, res) => {
-    res.render('home.hbs', {
-        pageTitle: "Home",
-        getCurrentYear: year,
-        active: "home",
-        User: req.user,
-        status: req.query.status,
+    Reservation.find({
+        googleId: null,
+        name: "empty",
+    }).then((reservations)=>{
+        res.render('home.hbs', {
+            pageTitle: "Home",
+            getCurrentYear: year,
+            active: "home",
+            User: req.user,
+            status: req.query.status,
+            Reservations: reservations,
+        });
     });
 });
 

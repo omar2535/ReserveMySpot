@@ -20,6 +20,27 @@
             <p> To check up on an existing reservation, click<a href ="MyAccount"> my account</a></p>
             <p> Have a nice day</p>
 
+            <table align="center">
+
+            <tr>
+                <th>Name</th>
+                <th>Date(YYYY-MM-DD)</th>
+                <th>Time(24hrs)</th>
+                <th>Location</th>
+            </tr>
+            {{#each Reservations}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{year}}/{{month}}/{{date}}</td>
+                <td>{{time}}</td>
+                <td>{{location}}</td>
+            </tr>   
+            {{/each}}
+
+            
+
+        </table>
+
 
         {{!-- If not logged in, can't add any reservation --}}  
         {{else}}
@@ -29,6 +50,8 @@
             <p>This is a website to make reservations</p>
             <p>To make a reservation, you must first create an account <a href = "auth/login">here</a></p>
         {{/if }}
+
+
         
     </div>
 </body>
