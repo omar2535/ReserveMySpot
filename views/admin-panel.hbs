@@ -33,21 +33,26 @@
 </style>
 
 
+
 <div class="navbar">
         <a id = "admin-panel" href="/admin">admin-panel</a>    
         <a id = "settings" href="/admin/settings">settings</a>
         <a id = "add" href="admin/add">add</a>
+        <a id = "home" style="float:right" href = "/">Home</a>
 </div>
+
+<div id = "status-check">
+    {{#ifCond status "success"}}
+        <p id = "success-response"> Success!</p>
+    {{/ifCond }}
+
+    {{#ifCond status "failed"}}
+        <p id = "failed-response"> Failed! Already exists</p>
+    {{/ifCond }}
+</div> 
 
 <body>
 
- {{#ifCond status "success"}}
-                <p id = "success-response"> Success!</p>
-            {{/ifCond }}
-
-            {{#ifCond status "failed"}}
-                <p id = "failed-response"> Failed! Already reserved</p>
-            {{/ifCond }}
 
 <!-- This is the reservation form -->
 {{> reservationForm}}
@@ -79,6 +84,10 @@
 {{> footer}}
 
 
-
+<script>
+    setTimeout(function(){
+     $('#status-check').remove();
+    }, 2000);
+</script>
 
 </html>
