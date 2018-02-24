@@ -8,6 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/mainPage.css" type = "text/css"/>
 <link rel="stylesheet" href="css/shared.css" type = "text/css"/>
+<script src="/scripts/status.js"></script>
 {{> header}}
 
 
@@ -45,13 +46,13 @@
         {{!-- If not logged in, can't add any reservation --}}
         {{else}}
             {{#ifCond status "unregistered"}}
-                <p id = "failed-response"> Please log in first!</p>
+                <div id="status-check">
+                    <p id = "failed-response"> Please log in first!</p>
+                </div>
             {{/ifCond}}
             <p>This is a website to make reservations</p>
             <p>To make a reservation, you must first create an account <a href = "auth/login">here</a></p>
         {{/if }}
-
-
 
     </div>
 </body>

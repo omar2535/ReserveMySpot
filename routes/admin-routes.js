@@ -15,7 +15,7 @@ const url = require("url");
 //variable for date
 var year = new Date().getFullYear();
 
-//Route for homepage on adminpage
+//Route for homepage on admin page
 adminRouter.get("/", (req, res) => {
   Reservation.find().then(reservations => {
     adminUtils.renderIfAdmin(req, res, "admin-panel.hbs", {

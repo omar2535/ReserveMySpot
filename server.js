@@ -17,7 +17,7 @@ const passportSetup = require("./config/passport-setup");
 //set to use handlebars as view engine
 app.set("view engine", "hbs");
 
-//Setting the pathnames and middleware
+//Setting the path names and middleware
 hbs.registerPartials(__dirname + "/views/partials");
 
 //To use CSS files:
@@ -29,7 +29,7 @@ app.use(
     secret: keys.session.cookieKey,
     resave: false,
     saveUninitialized: true
-  }) 
+  })
 );
 
 //Port number and start listening on PORT
@@ -54,5 +54,5 @@ app.use("/admin", adminRoutes);
 
 //Initialize Mongoose to connect to DB using URI in keys
 mongoose.connect(keys.mongodb.dbURI, () => {
-  console.log("connected to monbodb");
+  console.log("connected to mongodb");
 });
