@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/mainPage.css" type = "text/css"/>
-<link rel="stylesheet" href="css/shared.css" type = "text/css"/>
+<link rel="stylesheet" href="/css/mainPage.css" type = "text/css"/>
+<link rel="stylesheet" href="/css/shared.css" type = "text/css"/>
 
 {{> header}}
 {{> statusCheck}}
@@ -24,7 +24,6 @@
             <table align="center">
 
             <tr>
-                <th>Name</th>
                 <th>Date(YYYY-MM-DD)</th>
                 <th>Time(24hrs)</th>
                 <th>Location</th>
@@ -32,7 +31,6 @@
             </tr>
             {{#each Reservations}}
             <tr>
-                <td>{{name}}</td>
                 <td>{{year}}/{{month}}/{{date}}</td>
                 <td>{{time}}</td>
                 <td>{{location}}</td>
@@ -43,9 +41,6 @@
                 </td>
             </tr>
             {{/each}}
-
-
-
         </table>
 
 
