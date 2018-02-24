@@ -12,8 +12,8 @@
 {{> adminHeader}}
 
 <body>
-    
-    <!-- If we have status query string, then display it --> 
+
+    <!-- If we have status query string, then display it -->
     {{#if status}}
     <div id = "status-check">
         {{#ifCond status "success"}}
@@ -22,9 +22,9 @@
         {{#ifCond status "failed"}}
             <p id = "failed-response"> Failed! Already exists</p>
         {{/ifCond }}
-    </div> 
+    </div>
     {{/if}}
-    
+
 
 </body>
 

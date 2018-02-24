@@ -6,23 +6,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/scripts/status.js"></script>
-<link rel="stylesheet" href="/css/admin-shared.css" type = "text/css"/>
-
-
-{{> adminHeader}}
+<link rel="stylesheet" href="/css/admin-shared.css" type="text/css" /> {{> adminHeader}}
 
 <body>
-    
-    <!-- If we have status query string, then display it --> 
+
+    <!-- If we have status query string, then display it -->
     {{#if status}}
-    <div id = "status-check">
+    <div id="status-check">
         {{#ifCond status "success"}}
-            <p id = "success-response"> Success!</p>
+        <p id="success-response"> Success!</p>
+        {{/ifCond }} {{#ifCond status "failed"}}
+        <p id="failed-response"> Failed! Already exists</p>
         {{/ifCond }}
-        {{#ifCond status "failed"}}
-            <p id = "failed-response"> Failed! Already exists</p>
-        {{/ifCond }}
-    </div> 
+    </div>
     {{/if}}
     <!-- This is the reservation form -->
     {{> reservationForm}}
@@ -40,8 +36,8 @@
             <td>{{year}}/{{month}}/{{date}}</td>
             <td>{{time}}</td>
             <td>{{location}}</td>
-        </tr>   
-        {{/each}}             
+        </tr>
+        {{/each}}
     </table>
 
 </body>
