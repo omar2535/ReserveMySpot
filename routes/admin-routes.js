@@ -68,6 +68,21 @@ adminRouter.post("/", urlEncodedParser, (req, res) => {
       }
     });
   }
+  //If it was edit submission
+  if(req.body.edit){
+    Reservation.findById(req.body.edit).then((reservation)=>{
+      res.render('editForm.hbs', {
+        id: reservation._id,
+        googleId: reservation.googleId,
+        name: reservation.name,
+        year: reservation.year,
+        month: reservation.month,
+        date: reservation.date,
+        time: reservation.time,
+        location: reservation.location,
+      });
+    });
+  }
   //If it was a delete submission
   if(req.body.delete){
     Reservation.findOneAndRemove({
