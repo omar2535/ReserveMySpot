@@ -8,18 +8,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/mainPage.css" type = "text/css"/>
 <link rel="stylesheet" href="css/shared.css" type = "text/css"/>
-<script src="/scripts/status.js"></script>
-{{> header}}
 
-{{#if status}}
-    <div id="status-check">
-        {{#ifCond status "success"}}
-        <p id="success-response"> Success!</p>
-        {{/ifCond }} {{#ifCond status "failed"}}
-        <p id="failed-response"> Failed! Already exists</p>
-        {{/ifCond }}
-    </div>
-{{/if}}
+{{> header}}
+{{> statusCheck}}
 
 <body>
     <div class = "mainPage">
@@ -47,7 +38,7 @@
                 <td>{{location}}</td>
                 <td>
                     <form action="/" method="post">
-                        <button type="submit" value={{_id}} name="selection">Choose</button>
+                        <button class = "btn btn-primary" type="submit" value={{_id}} name="selection">Register</button>
                     </form>
                 </td>
             </tr>
@@ -60,11 +51,6 @@
 
         {{!-- If not logged in, can't add any reservation --}}
         {{else}}
-            {{#ifCond status "unregistered"}}
-                <div id="status-check">
-                    <p id = "failed-response"> Please log in first!</p>
-                </div>
-            {{/ifCond}}
             <p>This is a website to make reservations</p>
             <p>To make a reservation, you must first create an account <a href = "auth/login">here</a></p>
         {{/if }}

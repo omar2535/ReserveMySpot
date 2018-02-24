@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/statusCheck.css" type="text/css" /> 
+<script src="/scripts/status.js"></script>
+
+{{#if status}}
+    <div id="status-check">
+        {{#ifCond status "success"}}
+            <p id="success-response"> Success!</p>
+        {{/ifCond }} 
+        {{#ifCond status "failed"}}
+            <p id="failed-response"> Failed! </p>
+        {{/ifCond }}
+        {{#ifCond status "unregistered"}}
+            <p id = "failed-response"> Please log in first!</p>
+        {{/ifCond}}
+    </div>
+{{/if}}
+

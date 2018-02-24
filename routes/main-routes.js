@@ -48,7 +48,7 @@ mainRouter.post('/', urlEncodedParser, (req, res)=>{
        _id: req.body.selection
     }, {
         googleId: req.user.googleId,
-        name : req.user.firstName,
+        name : req.user.firstName + " " + req.user.lastName,
     }, ()=>{
         var status = encodeURIComponent("success");
         res.redirect("/?status=" + status);
@@ -71,6 +71,7 @@ mainRouter.get('/MyAccount', (req, res) => {
                 active: "myAccount",
                 User: req.user,
                 Reservations: reservations,
+                status: req.query.status,
             });
         });
 
@@ -78,6 +79,19 @@ mainRouter.get('/MyAccount', (req, res) => {
         var status = encodeURIComponent('unregistered');
         res.redirect('/?status=' + status);
     }
+});
+
+//get data from de-registered reservation
+mainRouter.post('/MyAccount', urlEncodedParser, (req, res)=>{
+    Reservation.findOneAndUpdate({
+        _id: req.body.selection
+     }, {
+         googleId: null,
+         name : "empty",
+     }, ()=>{
+         var status = encodeURIComponent("success");
+         res.redirect("/MyAccount/?status=" + status);
+     });
 });
 
 //Getting help page

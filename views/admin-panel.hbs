@@ -6,25 +6,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/scripts/status.js"></script>
-<link rel="stylesheet" href="/css/admin-shared.css" type="text/css" /> {{> adminHeader}}
+<link rel="stylesheet" href="/css/admin-shared.css" type="text/css" /> 
+
+{{> adminHeader}}
 
 <body>
 
-    <!-- If we have status query string, then display it -->
-    {{#if status}}
-    <div id="status-check">
-        {{#ifCond status "success"}}
-        <p id="success-response"> Success!</p>
-        {{/ifCond }} {{#ifCond status "failed"}}
-        <p id="failed-response"> Failed! Already exists</p>
-        {{/ifCond }}
-    </div>
-    {{/if}}
+    
+    {{> statusCheck}}
     <!-- This is the reservation form -->
     {{> reservationForm}}
     <h1> All Current Reservations: </h1>
     <table align="center">
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Date(YYYY-MM-DD)</th>
             <th>Time(24hrs)</th>
@@ -32,6 +27,7 @@
         </tr>
         {{#each Reservations}}
         <tr>
+            <td>{{_id}}</td>
             <td>{{name}}</td>
             <td>{{year}}/{{month}}/{{date}}</td>
             <td>{{time}}</td>
