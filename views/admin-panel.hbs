@@ -19,7 +19,8 @@
     <h1> All Current Reservations: </h1>
     <table align="center">
         <tr>
-            <th>ID</th>
+            <th>Reservation ID</th>
+            <th>GoogleId</th>
             <th>Name</th>
             <th>Date(YYYY-MM-DD)</th>
             <th>Time(24hrs)</th>
@@ -29,6 +30,11 @@
         {{#each Reservations}}
         <tr>
             <td>{{_id}}</td>
+            {{#if googleId}}
+            <td>{{googleId}}</td>
+            {{else}}
+            <td>Not Registered</td>
+            {{/if}}
             <td>{{name}}</td>
             <td>{{year}}/{{month}}/{{date}}</td>
             <td>{{time}}</td>
@@ -42,6 +48,7 @@
         </tr>
         {{/each}}
     </table>
+
 
 </body>
 

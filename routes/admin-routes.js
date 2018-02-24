@@ -94,6 +94,26 @@ adminRouter.post("/", urlEncodedParser, (req, res) => {
   }
 });
 
+//Route to edit a reservation
+adminRouter.post('/edit', urlEncodedParser, (req, res)=>{
+  var str = req.body.date_field.toString();
+  var arr = [];
+  arr = str.split("-");
+  Reservation.findOneAndUpdate({
+        _id: req.body.id_field,
+    }, {
+      googleId: req.body.googleId_field,
+      name: req.body.name_field,
+      year: arr[0],
+      month: arr[1],
+      date: arr[2],
+      time: req.body.time_field,
+      location: req.body.location_field,
+    }, ()=>{
+        var status = encodeURIComponent("success");
+        res.redirect("/admin/?status=" + status);
+    });
+});
 
 //Route for settings of site-settings
 adminRouter.get("/settings", (req, res) => {  
