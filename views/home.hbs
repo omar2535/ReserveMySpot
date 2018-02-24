@@ -11,6 +11,15 @@
 <script src="/scripts/status.js"></script>
 {{> header}}
 
+{{#if status}}
+    <div id="status-check">
+        {{#ifCond status "success"}}
+        <p id="success-response"> Success!</p>
+        {{/ifCond }} {{#ifCond status "failed"}}
+        <p id="failed-response"> Failed! Already exists</p>
+        {{/ifCond }}
+    </div>
+{{/if}}
 
 <body>
     <div class = "mainPage">
@@ -19,7 +28,7 @@
             <p> Welcome, {{User.firstName }} to this reservation software!</p>
             <p> To make a reservation, scroll down</p>
             <p> To check up on an existing reservation, click<a href ="MyAccount"> my account</a></p>
-            <p> Have a nice day</p>
+            <p> Here is a list of available times for reservation</p>
 
             <table align="center">
 
@@ -28,6 +37,7 @@
                 <th>Date(YYYY-MM-DD)</th>
                 <th>Time(24hrs)</th>
                 <th>Location</th>
+                <th>Click To Reserve</th>
             </tr>
             {{#each Reservations}}
             <tr>
@@ -35,6 +45,11 @@
                 <td>{{year}}/{{month}}/{{date}}</td>
                 <td>{{time}}</td>
                 <td>{{location}}</td>
+                <td>
+                    <form action="/" method="post">
+                        <button type="submit" value={{_id}} name="selection">Choose</button>
+                    </form>
+                </td>
             </tr>
             {{/each}}
 

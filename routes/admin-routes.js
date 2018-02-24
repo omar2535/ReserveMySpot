@@ -54,7 +54,8 @@ adminRouter.post("/", urlEncodedParser, (req, res) => {
         month: arr[1],
         date: arr[2],
         location: req.body.location_field,
-        time: req.body.time_field
+        time: req.body.time_field,
+        reservationId: '_' + Math.random().toString(36).substr(2, 9),
       })
         .save()
         .then(newReservation => {

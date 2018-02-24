@@ -42,6 +42,20 @@ mainRouter.get('/', (req, res) => {
     });
 });
 
+//get data from added reservation
+mainRouter.post('/', urlEncodedParser, (req, res)=>{
+    Reservation.findOneAndUpdate({
+       _id: req.body.selection
+    }, {
+        googleId: req.user.googleId,
+        name : req.user.firstName,
+    }, ()=>{
+        var status = encodeURIComponent("success");
+        res.redirect("/?status=" + status);
+    });
+    
+});
+
 //Getting MyAccountPage
 mainRouter.get('/MyAccount', (req, res) => {
     if (req.user) {

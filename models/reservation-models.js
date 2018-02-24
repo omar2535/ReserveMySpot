@@ -10,7 +10,8 @@ const reservationSchema = new Schema({
   month: String,
   date: String,
   time: String,
-  location: String
+  location: String,
+  reservationId: String,
 });
 
 const Reservation = mongoose.model("reservation", reservationSchema);
